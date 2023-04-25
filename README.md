@@ -1,6 +1,6 @@
 # AI Keyword Extractor
 
-This is a web application that uses natural language processing techniques to extract important keywords from a given text. It is built using React and Node.js, and it can be deployed to GitHub Pages.
+This is a web application that uses natural language processing techniques to extract important keywords from a given text. It is built using React and and Open AI Completions API.
 
 ## Usage
 
