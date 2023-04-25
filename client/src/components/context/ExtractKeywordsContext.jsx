@@ -45,16 +45,20 @@ const extractKeywordsReducer = (state, action) => {
 const ExtractKeywordsProvider = props => {
   const [state, dispatch] = useReducer(extractKeywordsReducer, initialState);
 
-  console.log('Extract Keywords Context State: ', state);
-
   const extractKeywords = async text => {
     dispatch({ type: 'IS_LOADING' });
+
+    const res = await fetch('/open-ai', { method: 'GET' });
+
+    const jsonData = await res.json();
+
+    const key = jsonData.key;
 
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_KEYWORD_EXTRACTOR_API_KEY}`,
+        Authorization: `Bearer ${key}`,
       },
       body: JSON.stringify({
         model: 'text-davinci-003',
@@ -74,7 +78,7 @@ const ExtractKeywordsProvider = props => {
     );
     const json = await response.json();
 
-    const data = json.choices[0].text.trim();
+    const data = json?.choices[0]?.text?.trim();
 
     dispatch({ type: 'EXTRACT_KEYWORDS', payload: data });
   };
