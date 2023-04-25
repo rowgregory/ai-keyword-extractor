@@ -45,7 +45,7 @@ const extractKeywordsReducer = (state, action) => {
 const ExtractKeywordsProvider = props => {
   const [state, dispatch] = useReducer(extractKeywordsReducer, initialState);
 
-  console.log('Extract Keywords Context State: ', state);
+  // console.log('Extract Keywords Context State: ', state);
 
   const extractKeywords = async text => {
     dispatch({ type: 'IS_LOADING' });
