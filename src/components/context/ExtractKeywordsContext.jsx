@@ -50,10 +50,6 @@ const ExtractKeywordsProvider = props => {
   const extractKeywords = async text => {
     dispatch({ type: 'IS_LOADING' });
 
-    console.log(
-      'key: ',
-      process.env.REACT_APP_OPEN_AI_KEYWORD_EXTRACTOR_API_KEY
-    );
     const options = {
       method: 'POST',
       headers: {
